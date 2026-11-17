@@ -1,0 +1,258 @@
+<title>Ignite 2026 Business Briefing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a board-pack briefing. One 760px reading column; each "shift" is a ruled memo block with three labelled rows (announced / why / Monday). Data section breaks wider for charts. */
+:root {
+  --bg: #f5f6f8;
+  --paper: #ffffff;
+  --ink: #101418;
+  --ink-2: #4b5260;
+  --muted: #7c8391;
+  --rule: #dfe3e9;
+  --grid: #eceef2;
+  --accent: #2a78d6;
+  --accent-ink: #1c5cab;
+  --accent-wash: #e8f1fc;
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --bar-mute: #c4cedb;
+  --f-display: "Sora", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1215; --paper: #171b20; --ink: #eef1f4; --ink-2: #b4bbc7; --muted: #8a919d; --rule: #2a3038; --grid: #232830;
+    --accent: #5598e7; --accent-ink: #86b6ef; --accent-wash: #16263a; --s1: #3987e5; --s2: #d95926; --bar-mute: #3a4452; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1215; --paper: #171b20; --ink: #eef1f4; --ink-2: #b4bbc7; --muted: #8a919d; --rule: #2a3038; --grid: #232830;
+  --accent: #5598e7; --accent-ink: #86b6ef; --accent-wash: #16263a; --s1: #3987e5; --s2: #d95926; --bar-mute: #3a4452; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 400 16.5px/1.6 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 72px; }
+main { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+header { padding-top: 52px; display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font: 600 12px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+h1 { font: 700 clamp(30px, 5.4vw, 46px)/1.1 var(--f-display); letter-spacing: -.025em; margin: 0; text-wrap: balance; }
+h2 { font: 700 clamp(22px, 3.4vw, 28px)/1.2 var(--f-display); letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+h3 { font: 700 clamp(19px, 2.8vw, 22px)/1.25 var(--f-display); letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 66ch; color: var(--ink-2); }
+p strong { color: var(--ink); font-weight: 600; }
+.lede { font-size: 18.5px; color: var(--ink); }
+a { color: var(--accent-ink); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; }
+.stat { padding: 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.stat + .stat { border-left: 1px solid var(--rule); }
+.stat b { font: 600 clamp(26px, 4vw, 34px)/1 var(--f-mono); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+
+.toc { display: flex; flex-direction: column; gap: 0; border-top: 2px solid var(--ink); }
+.toc a { display: grid; grid-template-columns: 34px 1fr; gap: 8px; padding: 11px 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font-weight: 500; }
+.toc a:hover { color: var(--accent-ink); }
+.toc a span { font: 600 13px/1.6 var(--f-mono); color: var(--muted); }
+
+.shift { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 20px; }
+.shift-head { display: flex; gap: 14px; align-items: baseline; }
+.shift-head .n { font: 600 14px/1 var(--f-mono); color: var(--accent-ink); flex: none; }
+.memo { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; padding: 16px 18px; }
+.row + .row { border-top: 1px solid var(--rule); }
+.row > .k { font: 600 11.5px/1.7 var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.row.monday { background: var(--accent-wash); border-radius: 0 0 7px 7px; }
+.row.monday > .k { color: var(--accent-ink); }
+.row.monday p { color: var(--ink); font-weight: 500; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; gap: 6px; } }
+ul.ann { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+ul.ann li { display: flex; flex-direction: column; gap: 2px; }
+.ann-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.ann-top strong { font-weight: 600; color: var(--ink); }
+.ann li > span { color: var(--ink-2); font-size: 15px; }
+.pill { font: 600 10.5px/1 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; white-space: nowrap; }
+.pill.ga { background: var(--ink); color: var(--paper); }
+.pill.preview { border: 1px solid var(--ink-2); color: var(--ink-2); }
+.pill.frontier { border: 1px dashed var(--muted); color: var(--muted); }
+.legend-pills { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--ink-2); align-items: center; }
+
+.chart { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 18px 12px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+.chart-title { font: 600 14.5px/1.4 var(--f-body); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+.legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+svg text.lbl { fill: var(--ink); font-weight: 600; font-size: 12px; }
+svg text.cat { font-family: var(--f-body); fill: var(--ink-2); font-size: 12.5px; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font: 500 12.5px/1.45 var(--f-mono);
+  padding: 8px 10px; border-radius: 4px; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); z-index: 2; }
+.tip span { display: block; }
+.src { font-size: 12px; color: var(--muted); }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+ol.check { margin: 0; padding: 0; list-style: none; counter-reset: c; display: flex; flex-direction: column; border-top: 2px solid var(--ink); }
+ol.check li { counter-increment: c; display: grid; grid-template-columns: 34px 1fr; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); }
+ol.check li::before { content: counter(c, decimal-leading-zero); font: 600 13px/1.65 var(--f-mono); color: var(--accent-ink); }
+ol.check strong { color: var(--ink); }
+
+.method { border-top: 1px solid var(--rule); padding-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.method ul { margin: 0; padding-left: 20px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; max-width: 68ch; font-size: 14.5px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Microsoft Ignite 2026 &middot; Day 1 &middot; 17 November 2026</div>
+    <h1>Microsoft wants to give your business an AI workforce. Only one in four US firms uses AI today.</h1>
+    <p class="lede">Today's Ignite keynote was about AI agents: software that works on tasks by itself, with its own budget, identity and security controls. This briefing turns the announcements into five changes business leaders should plan for. Each one comes with official US data on where companies actually are.</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <nav class="toc" aria-label="The five shifts" id="toc"></nav>
+
+  <div class="legend-pills" aria-label="Availability key">
+    <span class="pill ga">GA</span> available now
+    <span class="pill preview">Preview</span> testing, open to customers
+    <span class="pill frontier">Frontier</span> early-access programme
+  </div>
+
+  <div id="shifts" style="display:flex;flex-direction:column;gap:56px"></div>
+
+  <section id="reality">
+    <div class="eyebrow">The reality check</div>
+    <h2>The keynote is ahead of most businesses</h2>
+    <p>The U.S. Census Bureau asks about 1.2 million businesses every two weeks whether they used AI. The share has grown steadily but is still a minority. It varies a lot by industry, and so far very few firms say AI has cost jobs.</p>
+    <div class="grid2">
+      <div class="chart" id="c-trend"></div>
+      <div class="chart" id="c-sector"></div>
+      <div class="chart" id="c-effects"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Your Monday checklist</div>
+    <h2>Five things to do before the next planning cycle</h2>
+    <ol class="check" id="check"></ol>
+  </section>
+
+  <div class="method">
+    <h2>Sources and method</h2>
+    <ul>
+      <li><strong>Announcements:</strong> <a href="https://news.microsoft.com/events/ignite/2026/book-of-news/" target="_blank" rel="noopener">Microsoft Ignite 2026 Book of News</a> and the <a href="https://news.microsoft.com/events/ignite/2026/live-news/" target="_blank" rel="noopener">Ignite live news page</a>, 17 Nov 2026. Availability labels are Microsoft's. The McKinsey figures are as cited by Microsoft.</li>
+      <li><strong>Business data:</strong> <a href="https://www.census.gov/hfp/btos/data_downloads" target="_blank" rel="noopener">U.S. Census Bureau, Business Trends and Outlook Survey</a>. Latest wave covers the two weeks to 18 Oct 2026 (published 5 Nov 2026). Shares are of US employer businesses. In 2026 the Census renamed AI "Super Intelligence (formerly AI)" in its questions, and the question is otherwise unchanged.</li>
+      <li><strong>"Monday" actions</strong> are my recommendations, not Microsoft's.</li>
+      <li>The code that downloads, parses and charts the data is in the project repository, so every number can be reproduced.</li>
+    </ul>
+  </div>
+</main>
+
+<script>
+const D = /*__DATA__*/null;
+const pct = (v, d = 0) => (v * 100).toFixed(d) + '%';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const T = D.trend, last = T[T.length - 1], first = T[0];
+const eff = (q, a) => D.effects.find(e => e.question.startsWith(q) && e.answer === a).share;
+const topSec = D.sector[0], lowSec = D.sector[D.sector.length - 1];
+
+document.getElementById('stats').innerHTML = [
+  [pct(last.a), 'of US businesses used AI in the last two weeks (Census, Oct 2026)'],
+  ['+' + Math.round((last.a - first.a) * 100) + ' pts', `in a year, up from ${pct(first.a)} in Nov 2025`],
+  [pct(eff('Effect of AI on headcount', 'Decreased'), 1), 'say AI reduced their headcount. ' + pct(eff('Effect of AI on headcount', 'Increased'), 1) + ' say it increased it'],
+  [pct(topSec.a) + ' vs ' + pct(lowSec.a), 'AI use in the most- vs least-adopting industry'],
+].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+
+const sh = D.ignite.shifts;
+document.getElementById('toc').innerHTML = sh.map((s, i) =>
+  `<a href="#${s.id}"><span>0${i + 1}</span>${esc(s.title)}</a>`).join('');
+const pillClass = st => /^GA/.test(st) ? 'ga' : /frontier/i.test(st) ? 'frontier' : 'preview';
+document.getElementById('shifts').innerHTML = sh.map((s, i) => `
+  <article class="shift" id="${s.id}">
+    <div class="shift-head"><span class="n">0${i + 1}</span><h3>${esc(s.title)}</h3></div>
+    <div class="memo">
+      <div class="row"><div class="k">Announced</div>
+        <ul class="ann">${s.announced.map(([n, st, d]) => `<li><div class="ann-top"><strong>${esc(n)}</strong><span class="pill ${pillClass(st)}">${esc(st)}</span></div><span>${esc(d)}</span></li>`).join('')}</ul></div>
+      <div class="row"><div class="k">Why it matters</div><p>${esc(s.why)}</p></div>
+      <div class="row monday"><div class="k">Do on Monday</div><p>${esc(s.monday)}</p></div>
+    </div>
+  </article>`).join('');
+document.getElementById('check').innerHTML = sh.map(s => `<li><span><strong>${esc(s.title)}.</strong> ${esc(s.monday)}</span></li>`).join('');
+
+/* ---------- SVG charts ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+const SRC = 'Source: U.S. Census Bureau, Business Trends and Outlook Survey. Share of US employer businesses.';
+function frame(id, title, legend, W, H) {
+  const host = document.getElementById(id);
+  host.innerHTML = `<div class="chart-title">${title}</div>` + (legend ? `<div class="legend">${legend}</div>` : '');
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': title }, host);
+  const s = document.createElement('div'); s.className = 'src'; s.textContent = SRC; host.appendChild(s);
+  const tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; host.appendChild(tip);
+  return { host, svg, tip, W, H };
+}
+function showTip(f, px, py, html) {
+  const b = f.svg.getBoundingClientRect(), hb = f.host.getBoundingClientRect(), k = b.width / f.W;
+  f.tip.innerHTML = html; f.tip.hidden = false;
+  const half = f.tip.offsetWidth / 2; let left = b.left - hb.left + px * k;
+  left = Math.max(half + 4, Math.min(hb.width - half - 4, left));
+  f.tip.style.left = left + 'px'; f.tip.style.top = (b.top - hb.top + py * k) + 'px';
+}
+const fmtDate = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const mon = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: '2-digit' });
+
+(function trend() {
+  const f = frame('c-trend', 'Share of US businesses using AI, every two weeks',
+    `<span><i style="background:var(--s1)"></i>Used AI in the last two weeks</span><span><i style="background:var(--s2)"></i>Expect to use AI in the next six months</span>`, 700, 320);
+  const m = { t: 14, r: 64, b: 30, l: 44 }, n = T.length, max = .35;
+  const x = i => m.l + i * (f.W - m.l - m.r) / (n - 1), y = v => f.H - m.b - v / max * (f.H - m.t - m.b);
+  for (let v = 0; v <= max + 1e-9; v += .05) { el('line', { x1: m.l, x2: f.W - m.r, y1: y(v), y2: y(v), stroke: 'var(--grid)' }, f.svg);
+    if (Math.round(v * 100) % 10 === 0) el('text', { x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end' }, f.svg).textContent = pct(v); }
+  T.forEach((r, i) => { if ((n - 1 - i) % 6 === 0) el('text', { x: x(i), y: f.H - m.b + 18, 'text-anchor': 'middle' }, f.svg).textContent = mon(r.d); });
+  [['b', 'var(--s2)'], ['a', 'var(--s1)']].forEach(([k, c]) => {
+    el('path', { d: T.map((r, i) => `${i ? 'L' : 'M'}${x(i)},${y(r[k])}`).join(''), fill: 'none', stroke: c, 'stroke-width': 2, 'stroke-linejoin': 'round' }, f.svg);
+    el('circle', { cx: x(n - 1), cy: y(last[k]), r: 4.5, fill: c, stroke: 'var(--paper)', 'stroke-width': 2 }, f.svg);
+    el('text', { x: x(n - 1) + 9, y: y(last[k]) + 4, class: 'lbl' }, f.svg).textContent = pct(last[k]);
+  });
+  el('text', { x: x(0), y: y(first.a) + 18, 'text-anchor': 'start', class: 'lbl' }, f.svg).textContent = pct(first.a);
+  const g = el('line', { y1: m.t, y2: f.H - m.b, stroke: 'var(--muted)', 'stroke-dasharray': '3 3', visibility: 'hidden' }, f.svg);
+  const w = x(1) - x(0);
+  T.forEach((r, i) => { const h = el('rect', { x: x(i) - w / 2, y: m.t, width: w, height: f.H - m.t - m.b, fill: 'transparent' }, f.svg);
+    const on = () => { g.setAttribute('x1', x(i)); g.setAttribute('x2', x(i)); g.setAttribute('visibility', 'visible');
+      showTip(f, x(i), y(r.b), `<span>2 weeks to ${fmtDate(r.d)}</span><span>Used AI: ${pct(r.a, 1)}</span><span>Expect to: ${pct(r.b, 1)}</span>`); };
+    h.addEventListener('pointerenter', on); h.addEventListener('pointermove', on); });
+  f.svg.addEventListener('pointerleave', () => { g.setAttribute('visibility', 'hidden'); f.tip.hidden = true; });
+})();
+
+function hbars(id, title, rows, opts) {
+  const rowH = 30, m = { t: 6, r: 56, b: 6, l: opts.labelW }, W = 700, H = m.t + m.b + rows.length * rowH;
+  const f = frame(id, title, null, W, H), max = opts.max;
+  const x = v => m.l + v / max * (W - m.l - m.r);
+  rows.forEach((r, i) => {
+    const yc = m.t + i * rowH + rowH / 2, bh = 16, c = opts.color(r, i);
+    el('text', { x: m.l - 10, y: yc + 4, 'text-anchor': 'end', class: 'cat' }, f.svg).textContent = r.label;
+    const w = Math.max(2, x(r.v) - m.l), rad = Math.min(4, w / 2);
+    el('path', { d: `M${m.l},${yc - bh / 2}H${m.l + w - rad}Q${m.l + w},${yc - bh / 2} ${m.l + w},${yc - bh / 2 + rad}V${yc + bh / 2 - rad}Q${m.l + w},${yc + bh / 2} ${m.l + w - rad},${yc + bh / 2}H${m.l}Z`, fill: c }, f.svg);
+    el('text', { x: m.l + w + 8, y: yc + 4, class: opts.bold(r, i) ? 'lbl' : '' }, f.svg).textContent = pct(r.v, opts.dp || 0);
+    const hit = el('rect', { x: 0, y: yc - rowH / 2, width: W, height: rowH, fill: 'transparent' }, f.svg);
+    hit.addEventListener('pointerenter', () => showTip(f, m.l + w / 2, yc - bh / 2, `<span>${esc(r.label)}</span><span>${pct(r.v, 1)}</span>`));
+  });
+  f.svg.addEventListener('pointerleave', () => { f.tip.hidden = true; });
+}
+const narrow = matchMedia('(max-width: 560px)').matches;
+const short = s => s.replace(' (media, software, telecom)', '').replace(', scientific & technical services', ' services').replace(' & social assistance', '').replace(', entertainment & recreation', ' & entertainment');
+hbars('c-sector', 'AI use by industry, latest two-week period',
+  D.sector.map(r => ({ label: narrow ? short(r.s) : r.s, v: r.a })),
+  { labelW: narrow ? 210 : 320, max: .5, color: (r, i) => i < 4 ? "var(--s1)" : "var(--bar-mute)", bold: (r, i) => i < 4 });
+const E = q => ['Increased', 'Decreased', 'No change', 'Do not know'].map(a => ({ label: q + ': ' + a.toLowerCase(), v: eff(q, a) }));
+hbars('c-effects', 'Effect of AI on jobs over the last six months, as reported by businesses',
+  [...E('Effect of AI on headcount').slice(0, 2), ...E('Effect of AI on new hiring').slice(0, 2)].map(r => ({ ...r, label: r.label.replace('Effect of AI on ', '').replace('new hiring', 'Hiring').replace('headcount', 'Headcount') })),
+  { labelW: 230, max: .1, dp: 1, color: r => /decreased/.test(r.label) ? 'var(--s2)' : 'var(--s1)', bold: () => true });
+</script>

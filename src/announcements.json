@@ -1,0 +1,63 @@
+{
+  "source_url": "https://news.microsoft.com/events/ignite/2026/book-of-news/",
+  "live_url": "https://news.microsoft.com/events/ignite/2026/live-news/",
+  "shifts": [
+    {
+      "id": "manager",
+      "title": "AI agents get a line manager",
+      "announced": [
+        ["Agent 365 Cost Management", "Preview", "Shows what is driving AI spend, sets spending policies and sends alerts."],
+        ["Agent 365 Business Analytics", "Frontier", "Tracks agent success rate, user satisfaction and hours of work assisted."],
+        ["Agent usage insights in the Microsoft 365 admin center", "GA", "Available without an Agent 365 licence for Microsoft-built agents."]
+      ],
+      "why": "Microsoft's own launch materials cite McKinsey research: 93% of organisations have gone over their AI budgets, and AI spending can nearly quadruple once it scales company-wide. Agents are now being managed like a cost centre, with budgets, alerts and performance reviews.",
+      "monday": "Name one owner for AI spend. Agree on two measures, such as hours assisted and task success rate, before you scale any agent past a pilot."
+    },
+    {
+      "id": "front-door",
+      "title": "Copilot becomes where the workday starts",
+      "announced": [
+        ["Office in Copilot (Word, Excel, PowerPoint)", "GA", "Create and edit documents from inside Copilot."],
+        ["Copilot Home", "Rolling out", "A start page that recommends what to work on."],
+        ["Today (Brief and Feed)", "Private preview", "A daily briefing in Outlook and the Copilot app."],
+        ["Autopilot and Copilot Workspaces", "Frontier", "Personal agents that keep working on long tasks."]
+      ],
+      "why": "Microsoft wants Copilot, not Word or Outlook, to be the first screen people open. Census data shows 27% of US businesses already have staff using generative AI for work, so habits are forming now in whichever tool is open first.",
+      "monday": "Pick three routine workflows (the weekly report, meeting prep, first drafts of proposals). Run them through Copilot with one team for a month and measure the time saved."
+    },
+    {
+      "id": "usage",
+      "title": "You'll pay for usage, not just seats",
+      "announced": [
+        ["Copilot Credits extended", "GA", "Windows 365 for Agents can now be paid for with Copilot Credits."],
+        ["Today Feed", "Private preview", "Requires Copilot Credits. Today Brief is included with a Copilot licence."],
+        ["Agent 365 FinOps", "Preview", "Forecasting and optimisation for AI spend."]
+      ],
+      "why": "More features are now billed by usage on top of per-person licences. AI costs start to behave like cloud bills: they vary month to month and grow with adoption. Most budgets aren't built for that yet.",
+      "monday": "Ask finance to model AI as a consumption cost, the same way you budget for cloud, with a monthly cap and an alert threshold."
+    },
+    {
+      "id": "open",
+      "title": "Copilot works with tools beyond Microsoft",
+      "announced": [
+        ["Salesforce in Copilot", "Preview", "More than 38 prebuilt sales skills inside Copilot."],
+        ["Microsoft IQ", "GA", "Pulls business context from more than 350 third-party connectors."],
+        ["Fabric IQ connectors for ChatGPT and Claude", "Preview", "Your Fabric data can be used in other companies' AI assistants."]
+      ],
+      "why": "Most businesses run a mix of vendors, such as Salesforce for CRM, SAP for ERP and Google for some teams. Copilot now connects to tools outside Microsoft, so you don't need an all-Microsoft setup to get value from it.",
+      "monday": "List where your most important data lives (CRM, ERP, shared drives). Check which of those systems already connect to Copilot before you buy another standalone AI tool."
+    },
+    {
+      "id": "security",
+      "title": "Security teams now have to govern agents as well as people",
+      "announced": [
+        ["Entra Agent ID", "Preview", "Gives each AI agent its own identity with access policies, as people have."],
+        ["Purview protection for Copilot", "Preview", "Stops Copilot from using sensitive files, even ones nobody has labelled."],
+        ["Defender local agent protection", "GA", "Monitors or blocks AI agents running on Windows PCs."],
+        ["Microsoft Perception", "GA", "Security agents that work together. Its triage agent handles about 80% of the alerts in a typical Defender queue."]
+      ],
+      "why": "Every agent can read files, send messages and act on its own. Microsoft is now building identity, access and threat-protection tools aimed at agents, so governing them belongs on the security team's job list.",
+      "monday": "Make a list of every AI agent and assistant in use, including unofficial ones. Record who owns it, what it can access and what it can do."
+    }
+  ]
+}

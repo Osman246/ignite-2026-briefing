@@ -1,0 +1,18 @@
+naics,sector,ai_use_share,period
+51,"Information (media, software, telecom)",0.45,202622
+54,"Professional, scientific & technical services",0.41600000000000004,202622
+61,Educational services,0.395,202622
+52,Finance & insurance,0.392,202622
+53,Real estate,0.282,202622
+22,Utilities,0.275,202622
+62,Health care & social assistance,0.24600000000000002,202622
+42,Wholesale trade,0.231,202622
+56,Admin & support services,0.222,202622
+71,"Arts, entertainment & recreation",0.22,202622
+31,Manufacturing,0.214,202622
+44,Retail trade,0.191,202622
+23,Construction,0.171,202622
+81,Other services,0.157,202622
+48,Transportation & warehousing,0.126,202622
+72,Accommodation & food services,0.121,202622
+21,"Mining, oil & gas",0.102,202622
